@@ -7,7 +7,11 @@ more boards soon..
 
 # Goals
 1: get sd card and fat32 working
+
 2: get shell (or prototype at least)
+
 3: get screen to work properly
+
 4: add research and debug functions
+
 5: expand to more boards
