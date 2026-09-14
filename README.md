@@ -21,3 +21,5 @@ removing automatic tft_init(); function from code, it can be re enabled by addin
 9/14/26
 
 deciding to not add test feature "wget" into new builds, for some reason it totaled my sd card by making weird changes, filesystem was changed to read only and full /private/ dirrectory was replaced with weird 1.7gb extentionless file
+
+expect version 0.3 to arrive today or tommorow (9/15/26)
