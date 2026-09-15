@@ -1,4 +1,4 @@
-first ensure you typed "git clone --depth 1 https://github.com/dreadedmalinos66/OpenDust"
+first ensure you cloned the repo (git clone --depth 1 https://github.com/dreadedmalinos66/OpenDust)
 
 then go into root directory of the project and make sure you have platformio installed, if not install it
 
