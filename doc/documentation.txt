@@ -1,0 +1,49 @@
+how to connect to wifi:
+you need sd card first!
+* create folder(s) "/private/boot/"
+* create a file "/private/boot/nethost"
+* write this data inside the file:
+
+yourSSID
+yourPassword
+
+then save file and you should have network setted up
+
+
+how to ping web sites aka the only way to test if you actually do have network:
+internet connection required first!
+* type ping and then name of the web site (examples bellow)
+
+ping gnu.org
+ping 8.8.8.8
+ping <local ip>
+
+utility will do exactly 10 pings and after that it will stop
+
+
+"what is disable_uart?":
+it disables uart input, useful if you want to make some embedded system based on OpenDust
+and you dont want uart to be used
+how to auto start the command?:
+put "disable_uart();" in void setup() function after or before other lines of initialization code
+
+
+
+how to host a web site:
+network and sd card required!
+* type start_web_server
+* go into web address example: 54.153.245.234 (random ip address it probably does not lead anywhere)
+* if you see 404: file not found it means that it works, onto next steps
+* make a html file containing whatever you want to see on you local hosted web site
+* put the file on sd card
+* reboot your device
+* type start_web_server again and you should see your site when you go onto the address in your web browser
+"can i make it net wide available?" probably not, i doubt esp32 is even capable of that but who knows maybe it is possible but performance of the site will be terrible and probably a single dos attack will bring it down
+
+
+
+how to list available commands:
+* type list_commands
+
+
+
