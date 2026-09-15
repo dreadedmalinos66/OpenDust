@@ -1,0 +1,11 @@
+first ensure you typed "git clone --depth 1 https://github.com/dreadedmalinos66/OpenDust"
+
+then go into root directory of the project and make sure you have platformio installed, if not install it
+
+and then you can build the project, command: pio run
+
+how to upload the firmware (fastest and easiest method): pio run --target upload
+
+how to upload and jump into uart inteface: pio run --target upload --target monitor
+
+and now you should be able to use the project
