@@ -27,3 +27,7 @@ expect version 0.3 to arrive today or tommorow (9/15/26)
 9/15/26
 
 as promised, release 0.3 is here, added some experimental features and some quality of life features, or whatever you call them my english is bad
+
+9/22/26
+
+improved one function, college is hard for me so dont expect a lot of releases or bug fixes, next update will bring optimisation
