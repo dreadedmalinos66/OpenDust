@@ -227,7 +227,7 @@ void processCommand(String command){
 command.trim();
 
 if (command.equalsIgnoreCase("list_commands")){
-    Serial.println("\nlist_commands\ndisable_uart\necho text\nreboot\nregen_entropy\nread_file /file/path\nls\nremount\nping web.site\nshow_ip\nmanual\nstart_web_server\nsysinfo\nweb.site\nreconnect_network\nrestart_i2c\nrestart_tft\ndraw_tft\nclear_tft");
+    Serial.println("\nlist_commands\ndisable_uart\necho text\nreset\nregen_entropy\nread_file /file/path\nls\nremount\nping web.site\nshow_ip\nmanual\nstart_web_server\nsysinfo\nrestart_network\nrestart_i2c\nrestart_tft\ndraw_tft\nclear_tft");
 }
 
 else if (command.equalsIgnoreCase("disable_uart")){
@@ -239,7 +239,7 @@ else if (command.startsWith("echo ")){
     Serial.printf("\n%s\n", argument.c_str());
 }
 
-else if (command.equalsIgnoreCase("reboot")){
+else if (command.equalsIgnoreCase("reset")){
     ESP.restart();
 }
 
@@ -247,8 +247,8 @@ else if (command.equalsIgnoreCase("regen_entropy")){
     entropy();
 }
 
-else if (command.startsWith("read_file")) {
-    String filePath = command.substring(9);
+else if (command.startsWith("read_file ")) {
+    String filePath = command.substring(10);
     filePath.trim();
 
     if (!filePath.startsWith("/")) {
@@ -261,7 +261,7 @@ else if (command.startsWith("read_file")) {
 }
 
 else if (command.startsWith("ls")) {
-    String path = command.substring(2);
+    String path = command.substring(3);
     path.trim();
 
     if (path.length() == 0) {
@@ -298,20 +298,22 @@ else if (command.equalsIgnoreCase("start_web_server")){
 }
 
 else if (command.equalsIgnoreCase("sysinfo")){
-    //ugly code not gonna lie
-    Serial.print("free heap: ");
-    Serial.print(esp_get_free_heap_size());
-    Serial.print(" bytes");
+    Serial.printf("total heap: %u\n", ESP.getHeapSize());
+    Serial.printf("free heap: %u\n", ESP.getFreeHeap());
+    Serial.printf("min free: %u\n", ESP.getMinFreeHeap());
+    Serial.printf("max alloc: %u\n", ESP.getMaxAllocHeap());
+    // if (psramFound()) Serial.printf("free psram: %u\n", ESP.getFreePsram());
+    // ^ in next update :P
     esp_chip_info_t chip_info;
     esp_chip_info(&chip_info);
-    Serial.print("\nchip model: ");
+    Serial.print("chip model: ");
     Serial.println(chip_info.model);
     Serial.print("number of cores: ");
     Serial.println(chip_info.cores);
     Serial.print("total sd size: ");
     uint64_t totalSize = SD.cardSize();
     Serial.print(totalSize);
-    Serial.println(" bytes");
+    Serial.print("\n");
 }
 
 else if (command.equalsIgnoreCase("restart_network")){
@@ -353,6 +355,7 @@ void setup() {
     sd_init();
     i2c_init();
     net_init();
+    // add here what function to launch automatically on boot
 }
 
 void loop() {
